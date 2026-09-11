@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Untuk Kamu 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #8f4264;
+}
+
+.card {
+  width: 92%;
+  max-width: 420px;
+  min-height: 650px;
+  padding: 35px 25px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 15px 40px rgba(180,80,120,0.18);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  display: none;
+  animation: fade 0.6s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+.heart {
+  font-size: 75px;
+  animation: beat 1.2s infinite;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 12px 0 25px;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 17px;
+  color: white;
+  background: #e98bb2;
+  box-shadow: 0 7px 18px rgba(200,80,130,0.25);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.small {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 20px;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  z-index: 1;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- HALAMAN 1 -->
+  <section class="page active" id="page1">
+
+    <div class="heart">🐻</div>
+
+    <h1>hi kamu 💕 ! 🥹</h1>
+
+    <p>
+      Aku ada sesuatu nich<br>
+      yang aku nak bagi ...
+    </p>
+
+    <button onclick="nextPage(2)">
+      Buka 💌
+    </button>
+
+  </section>
+
+
+  <!-- HALAMAN 2 -->
+  <section class="page" id="page2">
+
+    <div class="heart">🦦</div>
+
+    <h1>goodmorning btw 🫶🏻</h1>
+
+    <p>
+      be happy yaaa! 💗
+      <br><br>
+      semoga harini kau okey , jangan lupa senyum
+n apapun masalah kau , be strong okey , hug jauh 🫂
+    </p>
+
+    <button onclick="nextPage(3)">
+      Next 💕
+    </button>
+
+  </section>
+
+
+  <!-- HALAMAN 3 -->
+  <section class="page" id="page3">
+
+    <div class="heart">🦩</div>
+
+    <h1>foryou !💗</h1>
+
+    <p>
+      Terima kasih sudah menjadi seseorang
+      yang begitu berarti.
+      <br><br>
+      Jangan lupa untuk selalu tersenyum,
+      karena senyummu itu indah. ><
+
+jujur aku dah kehabisan kata kata dan ayat aku
+semua terabur , tapi tidak mengapaaaa yang penting 
+effort gess #izin  😔🫰🏻
+
+to my favorite person if you see this, 
+i love you 👀🫰🏻
+    </p>
+
+    <button onclick="nextPage(4)">
+      Next 💌
+    </button>
+
+  </section>
+
+
+  <!-- HALAMAN 4 -->
+  <section class="page" id="page4">
+
+    <div class="heart">🐒</div>
+
+    <h1>One more thing...</h1>
+
+    <p>
+      Semoga hari ini penuh dengan
+      kebahagiaan, tawa, dan orang-orang
+      yang sayang sama kamu , 
+contohnya: aku 😼🫰🏻
+      <br><br>
+
+      <b>
+        "Making memories with you, 
+is my favorite thing to do"
+      </b>
+    </p>
+
+    <button onclick="nextPage(1)">
+      Ulang dari awal ↻
+    </button>
+
+    <p class="small">
+      made with love ♡
+    </p>
+
+  </section>
+
+</div>
+
+
+<script>
+
+function nextPage(number) {
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(page) {
+
+      page.classList.remove("active");
+
+    });
+
+  document
+    .getElementById("page" + number)
+    .classList.add("active");
+}
+
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "floating-heart";
+
+  heart.textContent =
+    ["🐻", "🦦", "🦩", "🐒", "🌸"]
+    [Math.floor(Math.random() * 5)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 5) + "s";
+
+  heart.style.fontSize =
+    (15 + Math.random() * 20) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+
+    heart.remove();
+
+  }, 9000);
+}
+
+
+setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
